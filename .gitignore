@@ -1,0 +1,76 @@
+# ----- Backend -----
+backend/venv/
+backend/__pycache__/
+backend/*.py[cod]
+backend/*.so
+backend/.Python
+backend/pip-delete-this-directory.txt
+backend/pip-selfcheck.json
+
+# بيانات النماذج والملفات الكبيرة
+backend/ai_models/
+backend/models/
+backend/uploads/
+backend/processed/
+
+# ----- Frontend -----
+frontend/.next/
+frontend/node_modules/
+frontend/.svelte-kit/
+frontend/package-lock.json
+frontend/yarn.lock
+frontend/.env.local
+
+# ----- Mobile (Flutter) -----
+mobile/build/
+mobile/android/
+mobile/ios/
+mobile/.dart_tool/
+mobile/.flutter-plugins
+mobile/.flutter-plugins-dependencies
+mobile/.metadata
+mobile/*.iml
+mobile/.packages
+mobile/generated_plugin_registrant.*
+
+# ----- IDE & Tools -----
+.idea/
+.vscode/
+*.swp
+*.swo
+*.log
+*.tmp
+*.bak
+
+# ----- Environment -----
+.env
+.env.prod
+.env.local
+.env.development
+.env.test
+.env.staging
+*.env*
+
+# ----- System -----
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# ----- Python -----
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.egg-info/
+*.egg
+dist/
+build/backend/ai_models/
+backend/models/
+backend/ai_models/
+backend/models/
+*.bin
+*.h5
+*.pth
+backend/models/*
+backend/ai_models/*
+mobile/commandlinetools-*.zip

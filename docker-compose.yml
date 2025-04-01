@@ -1,0 +1,79 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - MONGODB_URI=mongodb://db:27017
+      - REDIS_URL=redis://redis:6379
+      - ML_MODELS_DIR=/app/models
+    depends_on:
+      - db
+      - redis
+    volumes:
+      - ./backend/uploads:/app/uploads
+      - ./backend/processed:/app/processed
+
+  websocket:
+    build: ./backend
+    command: python -m app.ai.realtime_adaptation
+    ports:
+      - "8001:8001"
+    environment:
+      - WEBSOCKET_PORT=8001
+    depends_on:
+      - backend
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  mobile:
+    build: ./mobile
+    ports:
+      - "4000:4000" # لمحاكي الموبايل
+    environment:
+      - API_BASE_URL=http://backend:8000
+      - WEBSOCKET_URL=ws://websocket:8001
+    depends_on:
+      - backend
+
+  mobile-api:
+    build: ./mobile-api
+    ports:
+      - "8002:8002"
+    environment:
+      - API_BASE_URL=http://backend:8000
+    depends_on:
+      - backend
+
+  db:
+    image: mongo:5.0
+    volumes:
+      - mongodb_data:/data/db
+
+  redis:
+    image: redis:6.2
+    volumes:
+      - redis_data:/data
+
+  ml-dashboard:
+    image: streamlit/streamlit
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./ml-dashboard:/app
+    command: streamlit run dashboard.py
+    depends_on:
+      - backend
+
+volumes:
+  mongodb_data:
+  redis_data:
+  model_volume:

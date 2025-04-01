@@ -1,0 +1,38 @@
+name: markai_mobile
+description: MarkAI Mobile Application (تطبيق MarkAI للجوال)
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  dio: ^5.3.0
+  flutter_riverpod: 2.4.0
+  file_picker: 9.2.3
+  flutter_dotenv: 5.1.0
+  cached_network_image: 3.3.0
+  equatable: 2.0.0
+  intl: 0.19.0
+  flutter_hooks: 0.20.0
+  hooks_riverpod: 2.4.0
+  flutter_bloc: 8.1.6
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mockito: 5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/fonts/
+    - assets/translations/
+    - assets/icons/
+    - assets/locales/
+    - .env

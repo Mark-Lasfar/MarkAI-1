@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "axios": "^1.8.4",
+    "swagger-client": "^3.34.4",
+    "swagger-ui-react": "^5.20.2"
+  }
+}

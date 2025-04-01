@@ -1,0 +1,162 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    direction: rtl;
+  }
+  
+  .header {
+    padding: 1rem;
+    background-color: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+  }
+  
+  .chatArea {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: #f9fafb;
+  }
+  
+  .welcomeMessage {
+    text-align: center;
+    padding: 2rem 0;
+  }
+  
+  .welcomeMessage h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #111827;
+  }
+  
+  .suggestions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .suggestionCard {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  
+  .suggestionCard:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .message {
+    max-width: 80%;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+  
+  .userMessage {
+    background-color: #3b82f6;
+    color: white;
+    margin-left: auto;
+  }
+  
+  .aiMessage {
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    margin-right: auto;
+  }
+  
+  .loadingIndicator {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #9ca3af;
+    margin: 0 4px;
+    animation: bounce 1s infinite ease-in-out;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+  
+  .inputContainer {
+    padding: 1rem;
+    background-color: #fff;
+    border-top: 1px solid #e5e7eb;
+  }
+  
+  .inputBox {
+    display: flex;
+    align-items: center;
+    background-color: #f3f4f6;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+  }
+  
+  .inputBox input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+  
+  .inputBox button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #6b7280;
+  }
+  
+  .inputBox button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .inputBox button:last-child {
+    background-color: #3b82f6;
+    color: white;
+    border-radius: 0.375rem;
+    margin-right: 0.5rem;
+  }
+  
+  .fileInput {
+    display: none;
+  }
+  
+  .disclaimer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+  }
+  
+  .disclaimer svg {
+    margin-left: 0.25rem;
+  }

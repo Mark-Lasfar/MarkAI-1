@@ -1,0 +1,35 @@
+openapi: 3.0.0
+info:
+  title: MarkAI API
+  version: 1.0.0
+  description: API for MarkAI project
+
+paths:
+  /api/v1/ai/generate:
+    post:
+      summary: Generate text using AI models
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                model_name:
+                  type: string
+                  enum: [bloom, falcon, gpt-j]
+                prompt:
+                  type: string
+                max_length:
+                  type: integer
+                  default: 200
+      responses:
+        '200':
+          description: Successful generation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string

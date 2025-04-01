@@ -1,0 +1,24 @@
+# backend/core/config.yaml
+ai:
+  models:
+    text: ['bloom', 'falcon', 'gpt-j']
+    image: ['stable-diffusion', 'dall-e']
+    audio: ['speecht5', 'tacotron']
+
+subscription:
+  free:
+    messages: 50
+    media: 30
+    storage: 5
+  premium:
+    messages: unlimited
+    media: 1000
+    storage: 100
+
+features:
+  enabled:
+    - text_generation
+    - image_generation
+    - audio_processing
+    - video_synthesis
+    - code_generation

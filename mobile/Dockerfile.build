@@ -1,0 +1,46 @@
+# mobile/Dockerfile.build
+FROM ubuntu:22.04 as build
+
+ENV FLUTTER_VERSION=3.13.0 \
+    FLUTTER_HOME=/opt/flutter \
+    ANDROID_HOME=/opt/android-sdk
+
+# تثبيت التبعيات الأساسية
+RUN apt-get update && apt-get install -y \
+    curl \
+    git \
+    unzip \
+    xz-utils \
+    libglu1-mesa \
+    openjdk-11-jdk \
+    wget \
+    --no-install-recommends
+
+# تثبيت Flutter SDK
+RUN git clone https://github.com/flutter/flutter.git -b stable ${FLUTTER_HOME}
+ENV PATH="${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin"
+
+# تثبيت Android SDK
+RUN mkdir -p ${ANDROID_HOME}/cmdline-tools && \
+    wget -q https://dl.google.com/android/repository/commandlinetools-linux-8512546_latest.zip -O /tmp/cmdline-tools.zip && \
+    unzip /tmp/cmdline-tools.zip -d ${ANDROID_HOME}/cmdline-tools && \
+    mv ${ANDROID_HOME}/cmdline-tools/cmdline-tools ${ANDROID_HOME}/cmdline-tools/latest && \
+    rm /tmp/cmdline-tools.zip
+
+ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin"
+
+# قبول تراخيص Android
+RUN yes | sdkmanager --licenses
+
+WORKDIR /app
+COPY . .
+
+# بناء التطبيق
+RUN flutter doctor -v && \
+    flutter pub get && \
+    flutter build apk --release --target-platform android-arm64,android-arm
+
+# مرحلة الإخراج النهائية
+FROM alpine:latest as final
+WORKDIR /app/output
+COPY --from=build /app/build/app/outputs/flutter-apk/ .

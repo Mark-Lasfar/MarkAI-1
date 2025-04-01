@@ -1,0 +1,124 @@
+.chatContainer {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    direction: rtl;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .controls button {
+    background: none;
+    border: 1px solid white;
+    color: white;
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .chatArea {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: #f9f9f9;
+  }
+  
+  .message {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    max-width: 70%;
+  }
+  
+  .userMessage {
+    background-color: #4caf50;
+    color: white;
+    margin-right: auto;
+  }
+  
+  .aiMessage {
+    background-color: #e3f2fd;
+    margin-left: auto;
+    text-align: right;
+  }
+  
+  .loadingIndicator {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #2c3e50;
+    margin: 0 5px;
+    animation: bounce 1s infinite ease-in-out;
+  }
+  
+  .dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+  
+  .inputForm {
+    padding: 1rem;
+    border-top: 1px solid #ddd;
+    background-color: white;
+  }
+  
+  .inputContainer {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .modelSelector {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 150px;
+  }
+  
+  .textInput {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .submitButton {
+    padding: 0.5rem 1rem;
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submitButton:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
